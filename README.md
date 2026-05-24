@@ -1,10 +1,13 @@
-# ==========================================
+# =====================================================
 # PROBLEMA 3 - AUDITORÍA DE INVENTARIO
 # Curso: Fundamentos de Programación
-# ==========================================
+# Autor: [Tu Nombre]
+# =====================================================
 
-# Matriz de inventario
+# -----------------------------------------------------
+# MATRIZ DE INVENTARIO
 # [Código, Nombre, Stock Actual, Stock Mínimo]
+# -----------------------------------------------------
 
 inventario = [
     ["A001", "Teclado", 3, 10],
@@ -14,28 +17,32 @@ inventario = [
     ["A005", "Impresora", 1, 4]
 ]
 
-# ==========================================
-# Función para calcular cantidad a pedir
-# ==========================================
+# =====================================================
+# FUNCIÓN: calcular_pedido()
+# Objetivo:
+# Determinar la cantidad exacta a solicitar
+# según el stock actual y el stock mínimo.
+# =====================================================
 
 def calcular_pedido(stock_actual, stock_minimo):
 
+    # Validar si el stock es insuficiente
     if stock_actual < stock_minimo:
-        cantidad_pedir = stock_minimo - stock_actual
-    else:
-        cantidad_pedir = 0
+        return stock_minimo - stock_actual
 
-    return cantidad_pedir
+    # Si el stock es suficiente
+    return 0
 
 
-# ==========================================
-# Mostrar reporte de pedidos
-# ==========================================
+# =====================================================
+# REPORTE DE REABASTECIMIENTO
+# =====================================================
 
-print("====================================")
-print("   REPORTE DE REABASTECIMIENTO")
-print("====================================")
+print("\n==========================================")
+print("      REPORTE DE REABASTECIMIENTO")
+print("==========================================")
 
+# Recorrer cada artículo de la matriz
 for articulo in inventario:
 
     codigo = articulo[0]
@@ -43,14 +50,18 @@ for articulo in inventario:
     stock_actual = articulo[2]
     stock_minimo = articulo[3]
 
-    pedido = calcular_pedido(stock_actual, stock_minimo)
+    # Llamado a la función
+    cantidad_pedir = calcular_pedido(stock_actual, stock_minimo)
 
-    print("------------------------------------")
-    print("Código:", codigo)
-    print("Artículo:", nombre)
-    print("Stock actual:", stock_actual)
-    print("Stock mínimo:", stock_minimo)
-    print("Cantidad a pedir:", pedido)
+    # Mostrar información del artículo
+    print("\n------------------------------------------")
+    print(f"Código: {codigo}")
+    print(f"Artículo: {nombre}")
+    print(f"Stock actual: {stock_actual}")
+    print(f"Stock mínimo: {stock_minimo}")
+    print(f"Cantidad a pedir: {cantidad_pedir}")
 
-print("------------------------------------")
-print("Fin del reporte")
+# Mensaje final
+print("\n==========================================")
+print("        FIN DEL REPORTE")
+print("==========================================")
